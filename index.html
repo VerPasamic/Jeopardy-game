@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <title>Mission bit Jeopardy</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 Mission Bit Jeopardy! 🎮</h1>
+            <p>Multiplayer Edition - Team Competition!</p>
+        </div>
+
+        <!-- Setup Screen -->
+        <div class="setup-screen" id="setupScreen">
+            <h2>🎯 Setup Teams</h2>
+            <p>Add your teams to get started!</p>
+
+            <div class="team-input-section" id="teamInputs">
+                <div class="team-input-group">
+                    <input type="text" placeholder="Team Name" value="Team 1" class="team-name-input">
+                    <input type="color" value="#4949B4" class="color-picker">
+                </div>
+                <div class="team-input-group">
+                    <input type="text" placeholder="Team Name" value="Team 2" class="team-name-input">
+                    <input type="color" value="#7BEFD3" class="color-picker">
+                </div>
+            </div>
+
+            <button class="add-team-btn" onclick="addTeamInput()">+ Add Another Team</button>
+            <button class="start-game-btn" onclick="startGame()">Start Game! 🚀</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen" id="gameScreen">
+            <div class="score-board">
+                <div class="teams-container" id="teamsContainer"></div>
+                <div class="controls">
+                    <button class="next-team-btn" onclick="nextTeam()">Next Team ➡️</button>
+                    <button class="reset-btn" onclick="resetGame()">New Game</button>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <label for="jsonUpload">📁 Load Custom Questions (JSON):</label>
+                <input type="file" id="jsonUpload" accept=".json" onchange="loadCustomQuestions(event)">
+            </div>
+
+            <div class="board" id="board"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2 id="modalValue"></h2>
+            <div class="current-team-display" id="currentTeamDisplay"></div>
+            <p id="modalQuestion"></p>
+            <div class="button-group">
+                <button class="btn-correct" onclick="answerQuestion(true)">✓ Correct</button>
+                <button class="btn-incorrect" onclick="answerQuestion(false)">✗ Incorrect</button>
+                <button class="btn-close" onclick="closeModal()">Skip</button>
+            </div>
+            <div class="answer-section" id="answerSection" style="display: none;">
+                <h3>✨ Correct Answer:</h3>
+                <p id="modalAnswer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js">
+    </script>
+</body>
+
+</html>
